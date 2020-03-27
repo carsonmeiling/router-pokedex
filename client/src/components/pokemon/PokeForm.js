@@ -1,13 +1,13 @@
-import React, { Components } from 'react';
+import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
-class PokeForm extends Components {
-  state = { name: '', level: 0, location: '', move: '', type: ''}
+class PokeForm extends Component {
+  state = { name: '', level: 0, location: '', move: ''}
 
   componentDidMount(){
     if (this.props.id) {
-      const { name, level, location, move, type } = this.props
-      this.setState({ name, level, location, move, type })
+      const { name, level, location, move } = this.props
+      this.setState({ name, level, location, move })
     }
   }
 
@@ -17,9 +17,9 @@ class PokeForm extends Components {
       this.props.updatePokemon(this.props.id, this.state)
       this.props.toggleForm();
     } else {
-      // this.props.addPokemon(this.state)
+      this.props.addPokemon(this.state)
     }
-  this.setState = { name: '', level: 0, location: '', move: '', type: ''}
+  this.setState = { name: '', level: 0, location: '', move: ''}
 
   }
 
@@ -30,7 +30,7 @@ class PokeForm extends Components {
 
 
   render() {
-    const { name, level, location, move, type } = this.state
+    const { name, level, location, move } = this.state
 
     return(
       <Form onSubmit={this.handleSubmit}>
@@ -66,14 +66,7 @@ class PokeForm extends Components {
           value={move}
           onChange={this.handleChange}
           />
-        <Form.Input
-          label='Type'
-          required
-
-          name='type'
-          value={type}
-          onChange={this.handleChange}
-          />
+        
           <Form.Button>
             Submit
           </Form.Button>

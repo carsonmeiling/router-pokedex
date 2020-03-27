@@ -23,8 +23,8 @@ class Api::PokemonsController < ApplicationController
   end
 
   def destroy
-    @pokemon.find(params[:id]).destroy
-    render json: {nessage: 'Pokemon Released'}
+    Pokemon.find(params[:id]).destroy
+    render json: {message: 'Pokemon Released'}
   end
 
 
@@ -32,7 +32,7 @@ class Api::PokemonsController < ApplicationController
   private 
   def poke_params
     params.require(:pokemon).permit(
-      :name, :location, :move, :type, :level)
+      :name, :location, :move, :level)
   end
 
 
